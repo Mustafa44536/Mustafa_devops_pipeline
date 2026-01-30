@@ -1,3 +1,12 @@
+import os
+import pytest
+
+pytestmark = pytest.mark.skipif(
+    not os.getenv("COINMARKETCAP_API_KEY"),
+    reason="COINMARKETCAP_API_KEY not set in CI"
+)
+
+
 from webapp.crypto_api import transform, get_response
 
 
